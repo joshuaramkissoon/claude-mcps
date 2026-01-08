@@ -38,6 +38,32 @@ Already-installed MCPs are skipped (no-op), so it's safe to re-run anytime.
 
 ## Adding New MCPs
 
+### Option 1: Use Claude Code (Recommended)
+
+Open Claude Code in this repo and paste the MCP install command or JSON config:
+
+```
+"add this mcp: claude mcp add github npx -y @modelcontextprotocol/server-github"
+```
+
+or paste JSON:
+
+```
+add this mcp:
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"]
+    }
+  }
+}
+```
+
+Claude will automatically update `install.sh`, `README.md`, run the installer, and commit/push.
+
+### Option 2: Manual
+
 1. Edit `install.sh`
 2. Add a new `install_mcp` line:
 
@@ -52,8 +78,10 @@ install_mcp "name" "sse" "https://url.com/sse"
 install_mcp "name" "stdio" "npx" "-y" "package-name"
 ```
 
-3. Commit and push
-4. Everyone runs `git pull && ./install.sh`
+3. Update the "Included MCPs" table in this README
+4. Run `./install.sh` to test
+5. Commit and push
+6. Everyone runs `git pull && ./install.sh`
 
 ## MCPs Requiring Auth
 
