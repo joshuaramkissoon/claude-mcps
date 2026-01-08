@@ -24,8 +24,9 @@ install_mcp() {
   local transport="$2"
   shift 2
 
-  # Check if already installed
-  if claude mcp get "$name" --scope user &>/dev/null; then
+  # Check if already installed (check ~/.claude.json for user-scope MCPs)
+  if grep -q "\"$name\":" ~/.claude.json 2>/dev/null && \
+     jq -e ".mcpServers.\"$name\"" ~/.claude.json &>/dev/null; then
     echo -e "${GREEN}✓${NC} $name (already installed)"
     return 0
   fi
