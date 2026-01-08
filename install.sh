@@ -72,6 +72,9 @@ install_mcp "xcodebuildmcp" "stdio" "npx" "-y" "@smithery/cli@latest" "run" "cam
 # iOS Simulator MCP - Simulator control and automation
 install_mcp "ios-simulator" "stdio" "npx" "ios-simulator-mcp"
 
+# Fetch - HTTP requests and web content fetching
+install_mcp "fetch" "stdio" "uvx" "mcp-server-fetch"
+
 # ============================================
 # Add your own MCPs below
 # ============================================
