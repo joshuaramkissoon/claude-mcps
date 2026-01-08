@@ -56,6 +56,9 @@ echo ""
 # Sentry - Error monitoring and debugging
 install_mcp "sentry" "http" "https://mcp.sentry.dev/mcp"
 
+# Supabase - Database, auth, storage across all projects
+install_mcp "supabase" "http" "https://mcp.supabase.com/mcp"
+
 # ============================================
 # Stdio MCPs
 # ============================================
@@ -92,6 +95,13 @@ claude mcp list
 
 echo ""
 echo -e "${GREEN}Done!${NC} MCPs are now available globally in all projects."
+echo ""
+echo -e "${YELLOW}Next step:${NC} If any MCPs show '⚠ Needs authentication' above,"
+echo "run this command inside Claude Code to authenticate:"
+echo ""
+echo -e "  ${BLUE}/mcp${NC}"
+echo ""
+echo "This will open OAuth flows for MCPs that need it (Supabase, Sentry, etc.)"
 echo ""
 echo "Tips:"
 echo "  - Run 'claude mcp list' anytime to see installed MCPs"
