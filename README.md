@@ -29,9 +29,11 @@ Already-installed MCPs are skipped (no-op), so it's safe to re-run anytime.
 
 | Name | Type | Description |
 |------|------|-------------|
-| `sentry` | HTTP | Error monitoring and debugging |
+| `supabase` | HTTP | Database, auth, storage (OAuth) |
+| `sentry` | HTTP | Error monitoring and debugging (OAuth) |
 | `playwright` | Stdio | Browser automation and testing |
 | `xcodebuildmcp` | Stdio | iOS/macOS Xcode build tools |
+| `ios-simulator` | Stdio | iOS Simulator control and automation |
 
 ## Adding New MCPs
 
@@ -54,7 +56,19 @@ install_mcp "name" "stdio" "npx" "-y" "package-name"
 
 ## MCPs Requiring Auth
 
-Some MCPs need API keys. Set them as environment variables in your shell profile (`~/.zshrc` or `~/.bashrc`):
+### OAuth-based MCPs (Supabase, Sentry, etc.)
+
+After running `install.sh`, authenticate OAuth MCPs by running this inside Claude Code:
+
+```
+/mcp
+```
+
+This opens the OAuth flow in your browser for each MCP that needs it.
+
+### Environment Variable MCPs
+
+Some MCPs need API keys. Set them in your shell profile (`~/.zshrc` or `~/.bashrc`):
 
 ```bash
 # Example: GitHub MCP

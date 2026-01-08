@@ -69,6 +69,9 @@ install_mcp "playwright" "stdio" "npx" "@playwright/mcp@latest"
 # Xcode Build MCP - iOS/macOS development
 install_mcp "xcodebuildmcp" "stdio" "npx" "-y" "@smithery/cli@latest" "run" "cameroncooke/xcodebuildmcp"
 
+# iOS Simulator MCP - Simulator control and automation
+install_mcp "ios-simulator" "stdio" "npx" "ios-simulator-mcp"
+
 # ============================================
 # Add your own MCPs below
 # ============================================
