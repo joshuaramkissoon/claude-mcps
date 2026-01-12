@@ -75,6 +75,9 @@ install_mcp "ios-simulator" "stdio" "npx" "ios-simulator-mcp"
 # Fetch - HTTP requests and web content fetching
 install_mcp "fetch" "stdio" "uvx" "mcp-server-fetch"
 
+# Chrome DevTools - Browser debugging and inspection
+install_mcp "chrome-devtools" "stdio" "npx" "chrome-devtools-mcp@latest"
+
 # ============================================
 # Add your own MCPs below
 # ============================================

@@ -35,6 +35,7 @@ Already-installed MCPs are skipped (no-op), so it's safe to re-run anytime.
 | `xcodebuildmcp` | Stdio | iOS/macOS Xcode build tools |
 | `ios-simulator` | Stdio | iOS Simulator control and automation |
 | `fetch` | Stdio | HTTP requests and web content fetching |
+| `chrome-devtools` | Stdio | Browser debugging and inspection |
 
 ## Adding New MCPs
 
