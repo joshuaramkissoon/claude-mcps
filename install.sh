@@ -59,6 +59,9 @@ install_mcp "sentry" "http" "https://mcp.sentry.dev/mcp"
 # Supabase - Database, auth, storage across all projects
 install_mcp "supabase" "http" "https://mcp.supabase.com/mcp"
 
+# Zep Docs - Zep AI memory layer documentation
+install_mcp "zep-docs" "http" "https://docs-mcp.getzep.com/mcp"
+
 # ============================================
 # Stdio MCPs
 # ============================================

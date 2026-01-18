@@ -31,6 +31,7 @@ Already-installed MCPs are skipped (no-op), so it's safe to re-run anytime.
 |------|------|-------------|
 | `supabase` | HTTP | Database, auth, storage (OAuth) |
 | `sentry` | HTTP | Error monitoring and debugging (OAuth) |
+| `zep-docs` | HTTP | Zep AI memory layer documentation |
 | `playwright` | Stdio | Browser automation and testing |
 | `xcodebuildmcp` | Stdio | iOS/macOS Xcode build tools |
 | `ios-simulator` | Stdio | iOS Simulator control and automation |
