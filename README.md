@@ -32,6 +32,7 @@ Already-installed MCPs are skipped (no-op), so it's safe to re-run anytime.
 | `supabase` | HTTP | Database, auth, storage (OAuth) |
 | `sentry` | HTTP | Error monitoring and debugging (OAuth) |
 | `zep-docs` | HTTP | Zep AI memory layer documentation |
+| `revenuecat` | HTTP | Subscription and in-app purchase management (requires `REVENUECAT_API_KEY` in `.env`) |
 | `playwright` | Stdio | Browser automation and testing |
 | `xcodebuildmcp` | Stdio | iOS/macOS Xcode build tools |
 | `ios-simulator` | Stdio | iOS Simulator control and automation |
@@ -99,14 +100,30 @@ This opens the OAuth flow in your browser for each MCP that needs it.
 
 ### Environment Variable MCPs
 
-Some MCPs need API keys. Set them in your shell profile (`~/.zshrc` or `~/.bashrc`):
+Some MCPs need API keys. You can set them in a `.env` file in this repo (recommended) or in your shell profile.
+
+**Option 1: Using `.env` file (recommended)**
+
+Create a `.env` file in this repo directory:
+
+```bash
+# ~/.claude-mcps/.env
+REVENUECAT_API_KEY="your-revenuecat-api-v2-secret-key"
+GITHUB_TOKEN="your-personal-access-token"
+```
+
+The install script automatically loads this file. **Note:** `.env` is gitignored so your secrets stay local.
+
+**Option 2: Shell profile**
+
+Set them in your shell profile (`~/.zshrc` or `~/.bashrc`):
 
 ```bash
 # Example: GitHub MCP
 export GITHUB_TOKEN="your-personal-access-token"
 
-# Example: OpenAI
-export OPENAI_API_KEY="sk-..."
+# Example: RevenueCat
+export REVENUECAT_API_KEY="your-api-key"
 ```
 
 Then add the MCP to `install.sh`:

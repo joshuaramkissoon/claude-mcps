@@ -13,12 +13,25 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+# Load environment variables from .env file if it exists
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ -f "$SCRIPT_DIR/.env" ]; then
+  echo -e "${BLUE}Loading environment variables from .env...${NC}"
+  set -a
+  source "$SCRIPT_DIR/.env"
+  set +a
+fi
+
 echo -e "${BLUE}========================================${NC}"
 echo -e "${BLUE}  Claude MCP Global Installer${NC}"
 echo -e "${BLUE}========================================${NC}"
 echo ""
 
 # Helper function to install an MCP
+# Usage:
+#   install_mcp "name" "http" "url"
+#   install_mcp "name" "http" "url" --header "Header: Value"
+#   install_mcp "name" "stdio" "npx" "package-name" "args..."
 install_mcp() {
   local name="$1"
   local transport="$2"
@@ -35,7 +48,14 @@ install_mcp() {
 
   if [ "$transport" = "http" ]; then
     local url="$1"
-    claude mcp add --scope user --transport http "$name" "$url" >/dev/null 2>&1
+    shift
+    # Check for optional --header flag
+    if [ "$1" = "--header" ]; then
+      local header="$2"
+      claude mcp add --scope user --transport http "$name" "$url" --header "$header" >/dev/null 2>&1
+    else
+      claude mcp add --scope user --transport http "$name" "$url" >/dev/null 2>&1
+    fi
   elif [ "$transport" = "sse" ]; then
     local url="$1"
     claude mcp add --scope user --transport sse "$name" "$url" >/dev/null 2>&1
@@ -61,6 +81,9 @@ install_mcp "supabase" "http" "https://mcp.supabase.com/mcp"
 
 # Zep Docs - Zep AI memory layer documentation
 install_mcp "zep-docs" "http" "https://docs-mcp.getzep.com/mcp"
+
+# RevenueCat - Subscription and in-app purchase management (requires REVENUECAT_API_KEY env var)
+install_mcp "revenuecat" "http" "https://mcp.revenuecat.ai/mcp" --header "Authorization: Bearer ${REVENUECAT_API_KEY}"
 
 # ============================================
 # Stdio MCPs
